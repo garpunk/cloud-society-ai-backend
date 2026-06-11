@@ -37,12 +37,19 @@ ssh -i your-key.pem ubuntu@YOUR_EC2_PUBLIC_IP
 If needed:
 
 chmod 400 your-key.pem
+
 Part 3: Install Updates
+
 sudo apt update
+
 sudo apt upgrade -y
+
 Part 4: Install Python Tools
+
 sudo apt install python3-pip python3-venv curl -y
+
 Part 5: Install Ollama
+
 curl -fsSL https://ollama.com/install.sh | sh
 
 Check that it installed:

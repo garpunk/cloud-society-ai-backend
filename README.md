@@ -95,8 +95,11 @@ nano main.py
 Paste this:
 
 from fastapi import FastAPI
+
 from fastapi.middleware.cors import CORSMiddleware
+
 from pydantic import BaseModel
+
 import requests
 
 app = FastAPI()

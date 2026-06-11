@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple AWS AI App</title>
+  </head>
+  <body>
+    <h1>Simple AWS AI App</h1>
+
+    <textarea
+      id="prompt"
+      rows="5"
+      cols="50"
+      placeholder="Ask the AI something..."
+    ></textarea>
+    <br />
+
+    <button onclick="sendPrompt()">Send</button>
+
+    <h2>AI Response:</h2>
+    <p id="response">Waiting for prompt...</p>
+
+    <script>
+      async function sendPrompt() {
+        const prompt = document.getElementById("prompt").value;
+        const responseBox = document.getElementById("response");
+
+        responseBox.innerText = "Thinking...";
+
+        const res = await fetch("http://YOUR_EC2_PUBLIC_IP:8000/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt }),
+        });
+
+        const data = await res.json();
+        responseBox.innerText = data.response;
+      }
+    </script>
+  </body>
+</html>
